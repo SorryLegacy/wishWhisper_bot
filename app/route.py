@@ -1,13 +1,12 @@
 import asyncio
 
-from sqlalchemy import select
-from httpx import AsyncClient
-from fastapi import APIRouter, HTTPException, BackgroundTasks
-
-from config import config
-from app.shemas import ResponseFullUser, UpdateUser
-from app.models.user_models import User
 from app.models.database import db_depend
+from app.models.user_models import User
+from app.shemas import ResponseFullUser, UpdateUser
+from config import config
+from fastapi import APIRouter, BackgroundTasks, HTTPException
+from httpx import AsyncClient
+from sqlalchemy import select
 
 router = APIRouter(prefix="/api/v1")
 

@@ -1,12 +1,10 @@
-from typing import Any, Callable, Awaitable
-
+from typing import Any, Awaitable, Callable
 
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
+from app.models import User
 from sqlalchemy import exists, select
 from sqlalchemy.ext.asyncio import async_sessionmaker
-
-from app.models import User
 
 
 class DbMiddleware(BaseMiddleware):
@@ -51,5 +49,4 @@ class UserAuthMiddleware(BaseMiddleware):
             user_corutine = await session.execute(select(User).where(User.id == user_id))
             user = user_corutine.scalar()
         data["chat_user"] = user
-        value = await handler(event, data)
-        print(value)
+        return await handler(event, data)

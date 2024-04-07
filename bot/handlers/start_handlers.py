@@ -1,10 +1,8 @@
 from aiogram import Router
-from aiogram.types import Message
 from aiogram.filters import Command
-
-from bot.keyboards.buttons import approve_pair, web_app_kb
+from aiogram.types import Message
 from app.models import User, UserPair
-
+from bot.keyboards.buttons import approve_pair, pair_keyboard
 
 router = Router()
 
@@ -25,4 +23,4 @@ async def start_handler(msg: Message, chat_user: User) -> None:
 
 @router.message(Command("mood"))
 async def mood_webapp(msg: Message, chat_user: User) -> None:
-    await msg.answer(text="Поменять настроение", reply_markup=web_app_kb.as_markup())
+    await msg.answer(text="Поменять настроение", reply_markup=pair_keyboard.as_markup())

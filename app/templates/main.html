@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="{{ url_for('static', path='js/tg-web-app.js' )}}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ url_for('static', path='css/main.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
+	<script src="{{ url_for('static', path='js/gsap.min.js') }}"></script>
+
     <title>Document</title>
 </head>
 <div class="background">
@@ -57,10 +59,12 @@
 </body>
 
 </html>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <script>
     let tg = window.Telegram.WebApp;
+	tg.expand();
 	tg.headerColor = "#e8dce8"
+	alert()
 </script>
+
 <script src="{{ url_for('static', path='js/main.js' ) }}"></script>
