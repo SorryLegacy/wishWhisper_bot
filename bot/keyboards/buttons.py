@@ -1,13 +1,14 @@
 from urllib.parse import urljoin
 
-from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import WebAppInfo
-
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 from config import config
 
-
-web_app_kb = InlineKeyboardBuilder()
-web_app_kb.button(text="Try", web_app=WebAppInfo(url=urljoin(config.WEBAPP_URL, "/webapp")))
+pair_keyboard = InlineKeyboardBuilder()
+pair_keyboard.button(text="Change Mood", web_app=WebAppInfo(url=urljoin(config.WEBAPP_URL, "/webapp/mood")))
+pair_keyboard.button(text="Add Wish", web_app=WebAppInfo(url=urljoin(config.WEBAPP_URL, "/webapp/wish")))
+pair_keyboard.button(text="Your Wish", web_app=WebAppInfo(url=urljoin(config.WEBAPP_URL, "/webapp/my-wish")))
+pair_keyboard.button(text="Partner Wish", web_app=WebAppInfo(url=urljoin(config.WEBAPP_URL, "/webapp/partner-wish")))
 
 
 approve_pair = InlineKeyboardBuilder()

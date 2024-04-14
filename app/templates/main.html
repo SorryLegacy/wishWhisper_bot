@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static', path='css/main.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
-</head>
+{% extends 'base.html' %}
+{% block custom_css %}
+<link href="{{ url_for('static', path='css/main.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/gsap.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
 <div class="background">
 <div class="container">
 	<svg id="back">
@@ -54,13 +52,13 @@
 	<svg id="outer"></svg>
 </div>
 </div>
-</body>
+{% endblock %}
 
-</html>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
+{% block custom_js %}
 <script>
-    let tg = window.Telegram.WebApp;
+	tg.expand();
 	tg.headerColor = "#e8dce8"
 </script>
+
 <script src="{{ url_for('static', path='js/main.js' ) }}"></script>
+{% endblock %}

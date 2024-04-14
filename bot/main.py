@@ -2,13 +2,13 @@ import logging
 from urllib.parse import urljoin
 
 from aiogram import Bot, Dispatcher
-from aiogram.enums.parse_mode import ParseMode
 from aiogram.client.default import DefaultBotProperties
+from aiogram.enums.parse_mode import ParseMode
 from aiogram.types import WebhookInfo
-from config import config
-from bot.handlers import start_handlers, contact_handler
-from bot.middleware import DbMiddleware, UserAuthMiddleware
 from app.models.database import async_session
+from bot.handlers import contact_handler, start_handlers
+from bot.middleware import DbMiddleware, UserAuthMiddleware
+from config import config
 
 logger = logging.getLogger()
 bot = Bot(token=config.BOT_TOKEN.get_secret_value(), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -33,10 +33,11 @@ async def set_webhook(my_bot: Bot) -> None:
     if config.DEBUG:
         logger.debug(f"Current bot info: {current_webhook_info}")
     try:
-        WEBAPP_URL = urljoin(config.WEBAPP_URL, "webhook")
+
+        webapp_url = urljoin(config.WEBAPP_URL, "webhook")
 
         await bot.set_webhook(
-            WEBAPP_URL,
+            webapp_url,
             # secret_token=cfg.telegram_my_token,
             drop_pending_updates=True,
             allowed_updates=dp.resolve_used_update_types(),
