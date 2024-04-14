@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/wish.css') }}">
+{% endblock %}
+
+  {% block body %}
+<form id="addWish">
+  <h1>Add your wish</h1>
+  <div id="toastContainer"></div>
+  <div>
+    <input id="name" type="text" placeholder="" required />
+    <label for="name" class="wave">
+      <span>N</span>
+      <span>a</span>
+      <span>m</span>
+      <span>e</span>
+    </label>
+  </div>
+  <div>
+    <input id="url" type="text" placeholder=""/>
+    <label for="url" class="wave">
+      <span>U</span>
+      <span>r</span>
+      <span>l</span>
+      <span>*</span>
+    </label>
+  </div>
+  <div>
+    <input id="prioritet" type="number" placeholder=""/>
+    <label for="prioritet" class="wave">
+      <span>P</span>
+      <span>r</span>
+      <span>i</span>
+      <span>o</span>
+      <span>r</span>
+      <span>i</span>
+      <span>t</span>
+      <span>e</span>
+      <span>t</span>
+      <span>*</span>
+    </label>
+  </div>
+  <button type="reset" id="addButton">Add</button>
+  <h6>After you add a wish, your partner will receive a notification about it 😼 </h6>
+</form>
+{% endblock %}
+{% block custom_js %}
+<script src="{{ url_for('static', path='js/wish.js')  }}"></script>
+{% endblock %}

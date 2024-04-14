@@ -1,10 +1,7 @@
-from functools import lru_cache
-
-from pydantic import SecretStr, PostgresDsn
+from pydantic import PostgresDsn, SecretStr
 from pydantic_settings import BaseSettings
 
 
-@lru_cache
 class Config(BaseSettings):
     BOT_TOKEN: SecretStr
     WEBAPP_URL: str

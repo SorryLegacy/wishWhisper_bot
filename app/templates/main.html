@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<script src="{{ url_for('static', path='js/tg-web-app.js' )}}"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static', path='css/main.css') }}" rel="stylesheet">
-	<script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
-	<script src="{{ url_for('static', path='js/gsap.min.js') }}"></script>
+{% extends 'base.html' %}
+{% block custom_css %}
+<link href="{{ url_for('static', path='css/main.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/snap-svg.min.js') }}"></script>
+<script src="{{ url_for('static', path='js/gsap.min.js') }}"></script>
+{% endblock %}
 
-    <title>Document</title>
-</head>
+{% block body %}
 <div class="background">
 <div class="container">
 	<svg id="back">
@@ -56,14 +52,13 @@
 	<svg id="outer"></svg>
 </div>
 </div>
-</body>
+{% endblock %}
 
-</html>
-
+{% block custom_js %}
 <script>
-    let tg = window.Telegram.WebApp;
 	tg.expand();
 	tg.headerColor = "#e8dce8"
 </script>
 
 <script src="{{ url_for('static', path='js/main.js' ) }}"></script>
+{% endblock %}

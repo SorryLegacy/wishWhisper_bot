@@ -32,7 +32,7 @@ class User(AbstarctModel):
                 .where(
                     or_(UserPair.main_user_id == self.id, UserPair.second_user_id == self.id),
                     User.id != self.id,
-                    UserPair.is_approved is True,
+                    UserPair.is_approved == True,  # noqa
                 )
             )
             return partner.scalar()

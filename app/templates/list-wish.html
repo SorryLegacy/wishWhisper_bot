@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/wish.css') }}">
+{% endblock %}
+{% block body %}
+<div class="listContainer">
+</div>
+{% endblock %}
+{% block custom_js %}
+<script>
+    function getData() {
+        let currentUrl = window.location.href;
+        let hasPartner = currentUrl.includes("partner");
+        if (!(hasPartner)) {
+            url = "/api/v1/" + 470184649 + '/wish'
+        } else {
+            url = "/api/v1/" + 470184649 + "/partner/wish"
+        }
+        fetch(url).then(response => response.json())
+        .then(response => {
+            let container = document.getElementsByClassName('listContainer')[0]
+            for (wish of response){
+                container.innerHTML += `<div class="item">
+                    <span class="label">Name:</span>${wish.name}<br>
+                    <span class="label">URL:</span> <a href="${wish.url}">${wish.url}</a><br>
+                    <span class="label">Priority:</span>${wish.prioritet}
+                </div>`
+            }
+        })
+    }
+    getData()
+
+</script>
+{% endblock %}
