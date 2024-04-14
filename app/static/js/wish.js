@@ -15,7 +15,7 @@ addButtom.addEventListener('click', () => {
     for (let wish of wishDataFormInputs){
         wishData[wish.id] = wish.value
     }
-    wishData['user_id'] = 470184649
+    wishData['user_id'] = tg.initDataUnsafe.user.id
     fetch('/api/v1/wish', {
         method: "POST",
         headers: {

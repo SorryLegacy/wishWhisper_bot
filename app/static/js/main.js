@@ -115,7 +115,7 @@ function init() {
     // ☀️ set initial weather
 
     TweenMax.set(sunburst.node, { opacity: 0 })
-    fetchData(`/api/v1/user/${470184649}`, "GET").then(response => {
+    fetchData(`/api/v1/user/${tg.initDataUnsafe.user.id}`, "GET").then(response => {
         let user_mood = response['mood']
         let indexWeater = weather.findIndex(function (mood) {
             return mood.type === user_mood
@@ -578,7 +578,7 @@ function changeWeather(weather_object, by_user) {
     startLightningTimer();
     if (by_user) {
         fetchData('/api/v1/user/', 'PATCH', {
-            "user_id": 470184649,
+            "user_id": tg.initDataUnsafe.user.id,
             "mood": weather_object.type
         }).then(response => {
             if (response.mood) {

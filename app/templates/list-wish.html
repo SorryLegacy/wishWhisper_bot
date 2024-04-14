@@ -12,9 +12,9 @@
         let currentUrl = window.location.href;
         let hasPartner = currentUrl.includes("partner");
         if (!(hasPartner)) {
-            url = "/api/v1/" + 470184649 + '/wish'
+            url = "/api/v1/" + tg.initDataUnsafe.user.id + '/wish'
         } else {
-            url = "/api/v1/" + 470184649 + "/partner/wish"
+            url = "/api/v1/" + tg.initDataUnsafe.user.id + "/partner/wish"
         }
         fetch(url).then(response => response.json())
         .then(response => {
